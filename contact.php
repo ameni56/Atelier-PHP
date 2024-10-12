@@ -3,6 +3,21 @@
 // Récupérer les clés 
 $tab = ['nom', 'prenom', 'email', 'telephone', 'adresse'];
 
+// Initialiser une variable pour vérifier les valeurs
+$testValue = false;
+
+// Boucle pour vérifier si chaque clé est définie et non vide
+foreach ($tab as $key) {
+    if (!isset($_GET[$key]) || empty(trim($_GET[$key]))) {
+        $testValue = true;
+        break;
+    }
+}
+
+// Vérifier s'il y a des champs manquants
+if ($testValue) {
+    echo "<h1>Champs manquants</h1>";
+} else {
 $formData = [];
 // Récupérer les valeurs des clés
 foreach ($tab as $key) {
@@ -40,4 +55,5 @@ echo "
 </body>
 </html>
 ";
+}
 ?>
